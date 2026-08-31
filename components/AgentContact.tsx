@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { useInView } from "@/hooks/useInView";
+import { trackEvent } from "@/lib/analytics";
 import {
   MapPin,
   Phone,
@@ -31,7 +32,13 @@ const contactRows = [
   {
     icon: Phone,
     content: (
-      <a href="tel:+33652646890" className="hover:text-gold-600 transition-colors">
+      <a
+        href="tel:+33652646890"
+        onClick={() =>
+          trackEvent("phone_click", { link_location: "contact_frederic_fr" })
+        }
+        className="hover:text-gold-600 transition-colors"
+      >
         France : +33 6 52 64 68 90
       </a>
     ),
@@ -41,6 +48,9 @@ const contactRows = [
     content: (
       <a
         href="tel:+4917646073361"
+        onClick={() =>
+          trackEvent("phone_click", { link_location: "contact_frederic_de" })
+        }
         className="hover:text-gold-600 transition-colors"
       >
         Allemagne : +49 176 46073361
@@ -52,6 +62,9 @@ const contactRows = [
     content: (
       <a
         href="mailto:frederic.lejour@lejourconsulting.com"
+        onClick={() =>
+          trackEvent("email_click", { link_location: "contact_frederic" })
+        }
         className="hover:text-gold-600 transition-colors break-all"
       >
         frederic.lejour@lejourconsulting.com
@@ -181,12 +194,26 @@ export default function AgentContact() {
 
               {/* Boutons d'action */}
               <div className="mt-8 flex flex-col gap-3">
-                <a href="#contact-form" className="btn-primary w-full">
+                <a
+                  href="#contact-form"
+                  onClick={() =>
+                    trackEvent("cta_dossier_click", {
+                      cta_location: "contact",
+                      cta_label: "Recevoir le dossier complet",
+                    })
+                  }
+                  className="btn-primary w-full"
+                >
                   <FileText size={18} />
                   Recevoir le dossier complet
                 </a>
                 <a
                   href="mailto:frederic.lejour@lejourconsulting.com?subject=Planifier%20un%20%C3%A9change%20-%20Le%20203%20Avignon"
+                  onClick={() =>
+                    trackEvent("email_click", {
+                      link_location: "contact_planifier_echange",
+                    })
+                  }
                   className="btn-secondary w-full"
                 >
                   <CalendarDays size={18} />
@@ -194,6 +221,12 @@ export default function AgentContact() {
                 </a>
                 <a
                   href="mailto:frederic.lejour@lejourconsulting.com?subject=Organiser%20une%20visite%20-%20Le%20203%20Avignon"
+                  onClick={() =>
+                    trackEvent("cta_visite_click", {
+                      cta_location: "contact",
+                      cta_label: "Organiser une visite",
+                    })
+                  }
                   className="btn-secondary w-full"
                 >
                   <Building2 size={18} />

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Mail, Phone, MapPin, X } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const legalText = `MENTIONS LÉGALES
 
@@ -134,7 +135,16 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {["Dossier d'acquisition", "Inventaire des équipements", "Plans des locaux", "FAQ"].map((text) => (
                 <li key={text}>
-                  <a href="#contact-form" className="text-sm hover:text-gold-400 transition-colors">
+                  <a
+                    href="#contact-form"
+                    onClick={() =>
+                      trackEvent("cta_dossier_click", {
+                        cta_location: "footer",
+                        cta_label: text,
+                      })
+                    }
+                    className="text-sm hover:text-gold-400 transition-colors"
+                  >
                     {text}
                   </a>
                 </li>
@@ -157,13 +167,25 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Phone size={14} className="text-gold-500 shrink-0" />
-                <a href="tel:+33652646890" className="hover:text-gold-400 transition-colors">
+                <a
+                  href="tel:+33652646890"
+                  onClick={() =>
+                    trackEvent("phone_click", { link_location: "footer" })
+                  }
+                  className="hover:text-gold-400 transition-colors"
+                >
                   +33 6 52 64 68 90
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Mail size={14} className="text-gold-500 shrink-0" />
-                <a href="mailto:frederic.lejour@lejourconsulting.com" className="hover:text-gold-400 transition-colors">
+                <a
+                  href="mailto:frederic.lejour@lejourconsulting.com"
+                  onClick={() =>
+                    trackEvent("email_click", { link_location: "footer" })
+                  }
+                  className="hover:text-gold-400 transition-colors"
+                >
                   frederic.lejour@lejourconsulting.com
                 </a>
               </li>

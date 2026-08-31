@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 import { FileText, User } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const metrics = [
   { value: "193 m²", label: "Surface totale" },
@@ -76,7 +77,16 @@ export default function KeyFigures() {
           }`}
         >
           <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-4">
-            <a href="#contact-form" className="btn-primary text-base">
+            <a
+              href="#contact-form"
+              onClick={() =>
+                trackEvent("cta_dossier_click", {
+                  cta_location: "key_figures",
+                  cta_label: "Recevoir le dossier",
+                })
+              }
+              className="btn-primary text-base"
+            >
               <FileText size={18} />
               Recevoir le dossier
             </a>

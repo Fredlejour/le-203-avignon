@@ -2,6 +2,7 @@
 
 import { Fragment, useRef, useState } from "react";
 import { useInView } from "@/hooks/useInView";
+import { trackEvent } from "@/lib/analytics";
 import {
   Calculator,
   ShieldCheck,
@@ -366,7 +367,16 @@ export default function PricingExamples() {
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <a href="#contact-form" className="btn-primary text-base">
+          <a
+            href="#contact-form"
+            onClick={() =>
+              trackEvent("cta_dossier_click", {
+                cta_location: "pricing_examples",
+                cta_label: "Recevoir le détail du modèle économique",
+              })
+            }
+            className="btn-primary text-base"
+          >
             <FileText size={18} />
             Recevoir le détail du modèle économique
           </a>

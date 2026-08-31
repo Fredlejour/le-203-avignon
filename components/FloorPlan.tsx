@@ -37,6 +37,7 @@ import {
   ShieldCheck,
   MapPin,
 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 /* ------------------------------------------------------------------ */
 /*  DONNÉES CENTRALISÉES — modifier ici pour faire évoluer le plan      */
@@ -227,10 +228,16 @@ export default function FloorPlan({
     [highlightIds]
   );
 
-  const openLightbox = useCallback((id?: string) => {
-    if (id) setActiveId(id);
-    setLightboxOpen(true);
-  }, []);
+  const openLightbox = useCallback(
+    (id?: string) => {
+      if (id) setActiveId(id);
+      if (!lightboxOpen) {
+        trackEvent("plan_click", { cta_location: "plan_lightbox" });
+      }
+      setLightboxOpen(true);
+    },
+    [lightboxOpen]
+  );
   const closeLightbox = useCallback(() => setLightboxOpen(false), []);
 
   const isDark = theme === "dark";

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 type Persona = {
   image: string;
@@ -165,7 +166,16 @@ export default function Activites() {
             Les usages effectifs restent soumis aux règles applicables à chaque
             profession.
           </p>
-          <a href="#contact-form" className="btn-secondary group">
+          <a
+            href="#contact-form"
+            onClick={() =>
+              trackEvent("persona_cta_click", {
+                cta_location: "personas",
+                cta_label: "PARLONS DE VOTRE PROJET",
+              })
+            }
+            className="btn-secondary group"
+          >
             PARLONS DE VOTRE PROJET
             <ArrowRight
               size={16}

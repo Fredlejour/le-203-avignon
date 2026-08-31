@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useInView } from "@/hooks/useInView";
+import { trackEvent } from "@/lib/analytics";
 import {
   FileText,
   Calendar,
@@ -132,6 +133,10 @@ export default function ContactForm() {
       const result = await response.json();
 
       if (result.success) {
+        trackEvent(
+          activeForm === "dossier" ? "form_dossier_submit" : "form_visite_submit",
+          { form_type: activeForm }
+        );
         setSubmitted(true);
       } else {
         setSubmitError(true);

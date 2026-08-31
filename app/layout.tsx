@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import ScrollTracker from "@/components/ScrollTracker";
 import "./globals.css";
 
 const GA_MEASUREMENT_ID = "G-T3PYCM0WTS";
@@ -93,6 +94,7 @@ export default function RootLayout({
       <body className="antialiased" suppressHydrationWarning>
         {children}
         <Analytics />
+        <ScrollTracker />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"

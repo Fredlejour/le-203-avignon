@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useInView } from "@/hooks/useInView";
+import { trackEvent } from "@/lib/analytics";
 import { Calendar, Play, MapPin, Compass, Map } from "lucide-react";
 import FloorPlan from "@/components/FloorPlan";
 
@@ -46,7 +47,15 @@ export default function VirtualTour() {
           <div className="inline-flex p-1 bg-warm-100 border border-warm-200 rounded-full">
             <button
               type="button"
-              onClick={() => setView("tour")}
+              onClick={() => {
+                if (view !== "tour") {
+                  trackEvent("virtual_tour_click", {
+                    cta_location: "visite_toggle",
+                    cta_label: "Visite 360°",
+                  });
+                }
+                setView("tour");
+              }}
               className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all ${
                 view === "tour"
                   ? "bg-navy-800 text-white shadow"
@@ -58,7 +67,15 @@ export default function VirtualTour() {
             </button>
             <button
               type="button"
-              onClick={() => setView("plan")}
+              onClick={() => {
+                if (view !== "plan") {
+                  trackEvent("plan_click", {
+                    cta_location: "visite_toggle",
+                    cta_label: "Plan 2D",
+                  });
+                }
+                setView("plan");
+              }}
               className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all ${
                 view === "plan"
                   ? "bg-navy-800 text-white shadow"
@@ -113,12 +130,27 @@ export default function VirtualTour() {
             href="https://tour.previsite.com/07ACD33D-6669-9864-FE25-5837B09139D6"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              trackEvent("virtual_tour_click", {
+                cta_location: "visite_section",
+                cta_label: "Lancer la visite virtuelle",
+              })
+            }
             className="btn-primary"
           >
             <Play size={18} />
             Lancer la visite virtuelle
           </a>
-          <a href="#contact-form" className="btn-ghost group">
+          <a
+            href="#contact-form"
+            onClick={() =>
+              trackEvent("cta_visite_click", {
+                cta_location: "visite_section",
+                cta_label: "Planifier une visite physique",
+              })
+            }
+            className="btn-ghost group"
+          >
             <Calendar size={16} />
             Planifier une visite physique
           </a>

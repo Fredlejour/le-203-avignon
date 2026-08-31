@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { useInView } from "@/hooks/useInView";
+import { trackEvent } from "@/lib/analytics";
 import {
   Train,
   Car,
@@ -137,7 +138,16 @@ export default function Location() {
 
           {/* CTA */}
           <div className="mt-10 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-4">
-            <a href="#contact-form" className="btn-primary">
+            <a
+              href="#contact-form"
+              onClick={() =>
+                trackEvent("cta_dossier_click", {
+                  cta_location: "location",
+                  cta_label: "Recevoir le dossier d'acquisition",
+                })
+              }
+              className="btn-primary"
+            >
               <FileText size={18} />
               Recevoir le dossier d&apos;acquisition
             </a>

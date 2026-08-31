@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useInView } from "@/hooks/useInView";
+import { trackEvent } from "@/lib/analytics";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
@@ -129,6 +130,19 @@ export default function FAQ() {
                     {faq.cta && (
                       <a
                         href={faq.cta.href}
+                        onClick={() => {
+                          if (faq.cta?.href !== "#contact-form") return;
+                          const isVisite = faq.cta.label
+                            .toLowerCase()
+                            .includes("visite");
+                          trackEvent(
+                            isVisite ? "cta_visite_click" : "cta_dossier_click",
+                            {
+                              cta_location: "faq",
+                              cta_label: faq.cta.label,
+                            }
+                          );
+                        }}
                         className="inline-flex items-center gap-1 text-gold-500 text-sm font-semibold mt-3 hover:text-gold-600 transition-colors"
                       >
                         {faq.cta.label} →

@@ -13,6 +13,7 @@ import {
   FileText,
   User,
 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export default function AcquisitionSCI() {
   const ref = useRef<HTMLElement>(null);
@@ -397,7 +398,16 @@ export default function AcquisitionSCI() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-4">
-            <a href="#contact-form" className="btn-primary">
+            <a
+              href="#contact-form"
+              onClick={() =>
+                trackEvent("cta_dossier_click", {
+                  cta_location: "acquisition",
+                  cta_label: "Recevoir le dossier juridique & financier",
+                })
+              }
+              className="btn-primary"
+            >
               <FileText size={18} />
               Recevoir le dossier juridique &amp; financier
             </a>

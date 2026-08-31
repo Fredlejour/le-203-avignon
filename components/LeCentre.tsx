@@ -36,6 +36,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import FloorPlan from "@/components/FloorPlan";
+import { trackEvent } from "@/lib/analytics";
 
 const physicalAssets: { icon: LucideIcon; label: string }[] = [
   { icon: Armchair, label: "5 cabinets professionnels équipés" },
@@ -302,6 +303,12 @@ export default function LeCentre() {
           <div className="mt-8 flex justify-center">
             <a
               href="#visite"
+              onClick={() =>
+                trackEvent("plan_click", {
+                  cta_location: "centre",
+                  cta_label: "Explorer le plan détaillé",
+                })
+              }
               className="btn-secondary group"
             >
               <Map size={18} />
@@ -341,7 +348,10 @@ export default function LeCentre() {
                 <button
                   type="button"
                   key={spaceIndex}
-                  onClick={() => setLightbox(spaceIndex)}
+                  onClick={() => {
+                    trackEvent("gallery_open", { space_name: space.name });
+                    setLightbox(spaceIndex);
+                  }}
                   aria-label={`Agrandir ${space.name}`}
                   className="group relative overflow-hidden rounded-xl aspect-[4/3] text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500"
                 >
@@ -459,11 +469,29 @@ export default function LeCentre() {
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <a href="#contact-form" className="btn-primary">
+          <a
+            href="#contact-form"
+            onClick={() =>
+              trackEvent("cta_dossier_click", {
+                cta_location: "centre",
+                cta_label: "Recevoir le dossier d'acquisition",
+              })
+            }
+            className="btn-primary"
+          >
             <FileText size={18} />
             Recevoir le dossier d&apos;acquisition
           </a>
-          <a href="#visite" className="btn-secondary group">
+          <a
+            href="#visite"
+            onClick={() =>
+              trackEvent("plan_click", {
+                cta_location: "centre_detail",
+                cta_label: "EXPLORER LE 203 EN DÉTAIL",
+              })
+            }
+            className="btn-secondary group"
+          >
             <Map size={18} />
             EXPLORER LE 203 EN DÉTAIL
             <ArrowRight

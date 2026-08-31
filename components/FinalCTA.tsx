@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { useInView } from "@/hooks/useInView";
+import { trackEvent } from "@/lib/analytics";
 import { FileText, Calendar, ClipboardCheck, Lock, Clock, User } from "lucide-react";
 
 export default function FinalCTA() {
@@ -59,12 +60,27 @@ export default function FinalCTA() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row sm:flex-wrap items-center sm:items-start justify-center gap-4 mb-12">
-          <a href="#contact-form" className="btn-primary text-base">
+          <a
+            href="#contact-form"
+            onClick={() =>
+              trackEvent("cta_dossier_click", {
+                cta_location: "final_cta",
+                cta_label: "Recevoir le dossier complet",
+              })
+            }
+            className="btn-primary text-base"
+          >
             <FileText size={18} />
             Recevoir le dossier complet
           </a>
           <a
             href="#contact-form"
+            onClick={() =>
+              trackEvent("cta_visite_click", {
+                cta_location: "final_cta",
+                cta_label: "Planifier une visite",
+              })
+            }
             className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold text-sm tracking-wide uppercase rounded-sm hover:bg-white/10 transition-all duration-300"
           >
             <Calendar size={18} />

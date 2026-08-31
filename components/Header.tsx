@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X, FileText } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const navLinks = [
   { label: "Proposition", href: "#proposition" },
@@ -78,6 +79,12 @@ export default function Header() {
         {/* Desktop CTA */}
         <a
           href="#contact-form"
+          onClick={() =>
+            trackEvent("cta_dossier_click", {
+              cta_location: "header_desktop",
+              cta_label: "Dossier d'acquisition",
+            })
+          }
           className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 bg-gold-500 text-white text-xs font-semibold tracking-widest uppercase rounded-sm hover:bg-gold-600 transition-all duration-300 shadow-md hover:shadow-lg"
         >
           <FileText size={14} />
@@ -115,7 +122,13 @@ export default function Header() {
           ))}
           <a
             href="#contact-form"
-            onClick={() => setMobileOpen(false)}
+            onClick={() => {
+              setMobileOpen(false);
+              trackEvent("cta_dossier_click", {
+                cta_location: "header_mobile",
+                cta_label: "Dossier d'acquisition",
+              });
+            }}
             className="mt-4 btn-primary text-center"
           >
             <FileText size={16} />
