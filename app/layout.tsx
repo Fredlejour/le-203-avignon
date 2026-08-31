@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const GA_MEASUREMENT_ID = "G-YGP1Z9PRPV";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://le-203-avignon.vercel.app"),
   title: "Le 203 — Centre professionnel pluridisciplinaire à vendre",
   description:
     "Achetez un local professionnel de 193 m² déjà aménagé et équipé à Avignon-Montfavet. Murs, équipements, modèle économique et structure juridique existante.",
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
     title: "Le 203 — Centre professionnel pluridisciplinaire à vendre",
     description:
       "193 m² professionnels aménagés et équipés à Avignon-Montfavet. Murs, équipements, modèle économique et structure juridique existante.",
-    url: "https://le-203.vercel.app",
+    url: "https://le-203-avignon.vercel.app",
     siteName: "Le 203",
     locale: "fr_FR",
     type: "website",
@@ -42,7 +44,7 @@ export const metadata: Metadata = {
     google: "S7ZRsc_rOWU3SkM_VmcxTfq6ri-gylArkquqgjoYIJg",
   },
   alternates: {
-    canonical: "https://le-203.vercel.app",
+    canonical: "https://le-203-avignon.vercel.app",
   },
 };
 
@@ -52,7 +54,7 @@ const jsonLd = {
   name: "Le 203 — Centre professionnel pluridisciplinaire à vendre",
   description:
     "Achetez un local professionnel de 193 m² déjà aménagé et équipé à Avignon-Montfavet. Murs, équipements, modèle économique et structure juridique existante.",
-  url: "https://le-203.vercel.app",
+  url: "https://le-203-avignon.vercel.app",
   image: "/images/devanture.webp",
   address: {
     "@type": "PostalAddress",
@@ -90,6 +92,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased" suppressHydrationWarning>
         {children}
+        <Analytics />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
