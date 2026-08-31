@@ -6,10 +6,10 @@ import { FileText, User } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
 const metrics = [
-  { value: "193 m²", label: "Surface totale" },
-  { value: "5 cabinets", label: "Cabinets professionnels" },
+  { value: "193 m²", label: "Surface du bien" },
+  { value: "12 espaces", label: "Prêts à exploiter" },
+  { value: "RDC", label: "Accès direct" },
   { value: "2 places", label: "Parkings privatifs" },
-  { value: "ERP / PMR", label: "Accessible au public" },
 ];
 
 export default function KeyFigures() {
