@@ -3,7 +3,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const GA_MEASUREMENT_ID = "G-YGP1Z9PRPV";
+const GA_MEASUREMENT_ID = "G-T3PYCM0WTS";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://le-203-avignon.vercel.app"),
