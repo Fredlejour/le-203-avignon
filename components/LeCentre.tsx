@@ -234,7 +234,7 @@ export default function LeCentre() {
             </span>
           </div>
           <h2 className="section-title mb-5">
-            Le 203 : 193&nbsp;m² conçus pour accueillir
+            Le 203 : 193&nbsp;m² conçus pour accueillir{" "}
             <br className="hidden md:block" />
             plusieurs{" "}
             <span className="text-gold-500">activités professionnelles</span>.

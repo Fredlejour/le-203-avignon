@@ -36,7 +36,7 @@ export default function FinalCTA() {
         </div>
 
         <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-5">
-          Recevez le dossier complet
+          Recevez le dossier complet{" "}
           <br className="hidden sm:block" />
           et découvrez <span className="text-gold-400">Le 203</span>
         </h2>
