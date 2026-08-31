@@ -26,8 +26,10 @@ const proximities = [
 ];
 
 const marketData = [
-  { label: "Surface du bien", value: "193 m²" },
-  { label: "Parkings privatifs", value: "2 places" },
+  { value: "193 m²", label: "Surface du bien" },
+  { value: "12 espaces", label: "Prêts à exploiter" },
+  { value: "RDC", label: "Accès direct" },
+  { value: "2 places", label: "Parkings privatifs" },
 ];
 
 export default function Location() {
