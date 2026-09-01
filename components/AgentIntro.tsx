@@ -20,7 +20,7 @@ export default function AgentIntro() {
           }`}
         >
           {/* Photo */}
-          <div className="flex justify-center lg:justify-start">
+          <div className="hidden lg:flex justify-start">
             <div className="w-28 h-36 md:w-36 md:h-44 lg:w-44 lg:h-56 rounded-2xl overflow-hidden border-2 border-gold-500/30 shadow-2xl flex-shrink-0">
               <img
                 src="/images/frederic-lejour.jpg"
@@ -48,11 +48,6 @@ export default function AgentIntro() {
                 Je vous propose de découvrir ce lieu non pas comme une simple
                 surface professionnelle, mais comme un actif déjà structuré,
                 équipé et prêt à accueillir votre projet.
-              </p>
-              <p>
-                Mon rôle : vous aider à comprendre rapidement l&apos;opportunité,
-                vérifier si elle correspond à votre projet et vous accompagner
-                jusqu&apos;à la visite ou l&apos;étude du dossier.
               </p>
             </div>
           </div>
