@@ -15,7 +15,7 @@ const pillars = [
   {
     icon: Boxes,
     title: "Les équipements",
-    image: "/images/bureau suna japonais.webp",
+    image: "/images/bureau-suna-japonais.webp",
     alt: "Espace d'attente aménagé du centre Le 203",
     desc: "Le centre n'est pas vendu vide : cabinets équipés, mobilier, équipements spécialisés et infrastructures techniques déjà installés.",
   },
