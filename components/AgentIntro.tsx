@@ -11,7 +11,7 @@ export default function AgentIntro() {
     <section
       ref={ref}
       id="proposition"
-      className="pt-28 pb-10 md:pt-32 md:pb-14 bg-navy-900"
+      className="pt-16 pb-8 md:pt-20 md:pb-10 lg:pt-32 lg:pb-14 bg-navy-900"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         <div
@@ -33,7 +33,7 @@ export default function AgentIntro() {
 
           {/* Texte */}
           <div className="text-center lg:text-left">
-            <p className="text-gold-400 text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+            <p className="text-gold-400 text-xs font-semibold tracking-[0.2em] uppercase mb-3 hidden lg:block">
               Votre interlocuteur
             </p>
             <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-white leading-tight mb-4">
