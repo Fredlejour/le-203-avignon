@@ -98,7 +98,7 @@ export default function VirtualTour() {
             <div className="relative rounded-xl overflow-hidden shadow-2xl">
               <div className="aspect-video relative">
                 <iframe
-                  src="https://tour.previsite.com/07ACD33D-6669-9864-FE25-5837B09139D6"
+                  src="https://tour.previsite.com/07ACD33D-6669-9864-FE25-5837B09139D6?lead_capture=false"
                   title="Visite virtuelle 360° — Le 203, Avignon-Montfavet"
                   className="w-full h-full border-0"
                   allow="fullscreen; gyroscope; accelerometer"
@@ -127,7 +127,7 @@ export default function VirtualTour() {
           }`}
         >
           <a
-            href="https://tour.previsite.com/07ACD33D-6669-9864-FE25-5837B09139D6"
+            href="https://tour.previsite.com/07ACD33D-6669-9864-FE25-5837B09139D6?lead_capture=false"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
